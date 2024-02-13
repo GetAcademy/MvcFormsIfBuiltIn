@@ -1,12 +1,17 @@
+Tre måter variere HTML 
+ - Variabel og if
+ - Funksjon
+ - Ternary operator / nullish coalescing operator
+
 Skjemaer i MVC
  - input tekst
  - input tall
- - 
+ - input checkbox og radioknapp
+ - drop down
+ - "hjemmelagd" HTML
 
-Tre måter variere HTML 
 
 Innebygd funksjonalitet
-
     Tall
     - Heltall vs desimaltall
     - Pluss, minus, gange, dele og parenteser - modulus
