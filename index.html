@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Pause til 10:36</h1>
+    <div id="app"></div>
+
+    <script>            
+        // model
+        let number = -5;
+        let timer;
+
+        // view
+        updateView();
+        function updateView() {
+            /*
+                Negative tall: blå
+                Positive tall: rød
+            */
+            // let color;
+            // if (number >= 0) {
+            //     color = 'red';
+            // } else {
+            //     color = 'blue';
+            // }
+            // let color = number >= 0 ? 'red' : 'blue';
+
+            document.getElementById('app').innerHTML = /*HTML*/`
+                <h1>Min app</h1>
+                Tallet er: ${number}
+                <div style="width: ${getWidth()};background-color: ${getColor()}">x</div>
+                <button onclick="add()">+</button>
+                <button onclick="startTimer()">Start timer</button>
+                <button onclick="stopTimer()">Stopp timer</button>
+            `;
+        }
+
+        function getWidth() {
+            if (number >= 0) {
+                return number + 'rem';
+            } else {
+                return -number + 'rem';
+            }
+        }
+
+        function getColor() {
+            if (number >= 0) {
+                return 'red';
+            } else {
+                return 'blue';
+            }
+        }
+
+        // controller
+        function add() {
+            number++;
+            updateView();
+        }
+
+        function startTimer(){
+            timer = setInterval(add, 500);
+        }
+
+        function stopTimer(){
+            clearInterval(timer);
+        }
+    </script>
+</body>
+
+</html>

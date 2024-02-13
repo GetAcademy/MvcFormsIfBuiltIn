@@ -10,7 +10,6 @@ Skjemaer i MVC
  - drop down
  - "hjemmelagd" HTML
 
-
 Innebygd funksjonalitet
     Tall
     - Heltall vs desimaltall
@@ -23,7 +22,6 @@ Innebygd funksjonalitet
     - min og max
     - random
     eksempel: guess the number
-
 
     Tekst
     - charAt(), charCodeAt(), String.fromCharCode()
