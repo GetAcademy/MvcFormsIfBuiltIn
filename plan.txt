@@ -1,7 +1,21 @@
 Tre måter variere HTML 
  - Variabel og if
+    let color;
+    if (number >= 0) {
+        color = 'red';
+    } else {
+        color = 'blue';
+    } 
  - Funksjon
+    function getColor() {
+        if (number >= 0) {
+            return 'red';
+        } else {
+            return 'blue';
+        }
+    } 
  - Ternary operator / nullish coalescing operator
+    let color = number >= 0 ? 'red' : 'blue';
 
 Skjemaer i MVC
  - input tekst

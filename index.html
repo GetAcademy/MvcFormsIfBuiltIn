@@ -8,12 +8,12 @@
 </head>
 
 <body>
-    <h1>Pause til 10:36</h1>
     <div id="app"></div>
 
     <script>            
         // model
         let number = -5;
+        let theName;
         let timer;
 
         // view
@@ -23,16 +23,13 @@
                 Negative tall: blå
                 Positive tall: rød
             */
-            // let color;
-            // if (number >= 0) {
-            //     color = 'red';
-            // } else {
-            //     color = 'blue';
-            // }
+
             // let color = number >= 0 ? 'red' : 'blue';
 
             document.getElementById('app').innerHTML = /*HTML*/`
-                <h1>Min app</h1>
+                <!--<h1>Velkommen, ${theName == undefined ? 'gjest' : theName}!</h1>-->
+                <h1>Velkommen, ${theName ?? 'gjest'}!</h1>
+                <!--<h1>Velkommen, ${theName || 'gjest'}!</h1>-->
                 Tallet er: ${number}
                 <div style="width: ${getWidth()};background-color: ${getColor()}">x</div>
                 <button onclick="add()">+</button>
