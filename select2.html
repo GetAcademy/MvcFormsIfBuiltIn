@@ -24,6 +24,7 @@
             margin: 1px;
             cursor: pointer;
             display: flex;
+            padding-left: 1rem;
         }
         
         .closedDropDown {
@@ -56,7 +57,7 @@
                     ${isForeColorOpen ? /*HTML*/`
                         <div class="openDropDown">
                             <div>Svart</div>
-                            <div>Rød</div>
+                            <div onclick="setForeColor('red')">Rød</div>
                             <div>Grønn</div>
                             <div>Blå</div>
                         </div>
@@ -83,7 +84,6 @@
                         `
                 }
                 </div>
-                <button onclick="updateView()">Oppdater</button>
             `;
             document.body.style.color = foreColor;
             document.body.style.backgroundColor = backColor;
@@ -91,7 +91,11 @@
 
 
         // controller
-
+        function setForeColor(color){
+            foreColor = color;
+            isForeColorOpen = false;
+            updateView();
+        }
     </script>
 </body>
 
