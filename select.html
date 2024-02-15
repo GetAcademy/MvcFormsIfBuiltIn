@@ -10,7 +10,9 @@
             display: grid;
             grid-template-columns: 12rem auto;
         }
-        .myGrid > div, select{
+
+        .myGrid>div,
+        select {
             font-size: 3vh;
         }
     </style>
@@ -51,8 +53,8 @@
                 </div>
                 <button onclick="updateView()">Oppdater</button>
             `;
-            document.body.style.color = foreColor;
-            document.body.style.backgroundColor = backColor;
+            if (foreColor != null) document.body.style.color = foreColor;
+            if (backColor != null) document.body.style.backgroundColor = backColor;
         }
 
 
