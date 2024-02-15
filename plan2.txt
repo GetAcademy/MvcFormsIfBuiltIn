@@ -20,8 +20,6 @@ Innebygd funksjonalitet
     - random
     eksempel1: guess the number     
 
-Pause til 13:37
-> Hvordan kan man bruke text.replace hvis du vil endre to eller tre bokstaver men ikke alt som replaceAll?
 
     Tekst
     - charAt(), charCodeAt(), String.fromCharCode()

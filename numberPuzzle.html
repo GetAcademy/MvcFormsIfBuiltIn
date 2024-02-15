@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app{
+            display: grid;
+            grid-template-columns: repeat(3,100px);
+            grid-template-rows: repeat(3,100px);
+        }
+        #app > div{
+            border: 2px solid gray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 300%;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        let board = '37541 286';
+
+        updateView();
+        function updateView(){
+            let cellsHtml = '';
+            for(let index = 0; index < board.length; index++){
+                cellsHtml +=  `<div>${board.charAt(index)}</div>`;
+            }
+            document.getElementById('app').innerHTML = cellsHtml;
+
+        }
+    </script>
+</body>
+</html>
