@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        // model
+        let currentDateIsoString = '2024-02-01';
+
+        // view
+        updateView();
+        function updateView() {
+            let currentDate = new Date(currentDateIsoString);
+
+            document.getElementById('app').innerHTML = /*HTML*/`
+                ${currentDate.toLocaleDateString()}
+                <div>
+                    <button onclick="moveDays(7)">Neste uke</button>
+                    <button onclick="moveDays(1)">Neste dag</button>
+                    <button onclick="moveDays(-1)">Forrige dag</button>
+                    <button onclick="moveDays(-7)">Forrige uke</button>
+                </div>
+            `;
+        }
+
+        // controller
+        function moveDays(days){
+            let currentDate = new Date(currentDateIsoString);
+            let millis = currentDate.getTime();
+            const millisInOneDay = 1000 * 60 * 60 * 24;            
+            currentDate = new Date(millis + millisInOneDay * days);
+            currentDateIsoString = currentDate.toISOString();
+            updateView();
+        }
+    </script>
+
+</body>
+</html>
