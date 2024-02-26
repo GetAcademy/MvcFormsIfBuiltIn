@@ -4,21 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .week{
+            display: grid;
+            grid-template-columns: repeat(7, 80px);
+        }
+    </style>
 </head>
 <body>
     <div id="app"></div>
 
     <script>
         // model
-        let currentDateIsoString = '2024-02-01';
+        let currentDateIsoString = '2024-02-28';
 
         // view
         updateView();
-        function updateView() {
-            let currentDate = new Date(currentDateIsoString);
-
+        function updateView() {            
             document.getElementById('app').innerHTML = /*HTML*/`
-                ${currentDate.toLocaleDateString()}
+                ${createWeekHtml()}
                 <div>
                     <button onclick="moveDays(7)">Neste uke</button>
                     <button onclick="moveDays(1)">Neste dag</button>
@@ -26,6 +30,50 @@
                     <button onclick="moveDays(-7)">Forrige uke</button>
                 </div>
             `;
+        }
+
+        function createWeekHtml(){
+            let date = new Date(currentDateIsoString);
+            date = findMonday(date);
+            let html = '';
+            for(let days = 0; days < 7; days++ ){
+                html += /*HTML*/`<div>${addDays(date, days).toLocaleDateString()}</div>`;
+            }            
+            return /*HTML*/`
+                <div class="week">
+                    <div>Mandag</div>
+                    <div>Tirsdag</div>
+                    <div>Onsdag</div>
+                    <div>Torsdag</div>
+                    <div>Fredag</div>
+                    <div>Lørdag</div>
+                    <div>Søndag</div>
+                    ${html}
+                </div>
+            `;
+            // return /*HTML*/`
+            //     <li>${currentDate.toLocaleDateString()}</li>
+            //     <li>${addDays(currentDate, 1).toLocaleDateString()}</li>
+            //     <li>${addDays(currentDate, 2).toLocaleDateString()}</li>
+            //     <li>${addDays(currentDate, 3).toLocaleDateString()}</li>
+            //     <li>${addDays(currentDate, 4).toLocaleDateString()}</li>
+            //     <li>${addDays(currentDate, 5).toLocaleDateString()}</li>
+            //     <li>${addDays(currentDate, 6).toLocaleDateString()}</li>
+            // `;
+        }
+
+        function findMonday(date){
+            //så lenge dagen ikke er mandag: gå en dag bakover
+            while(date.getDay() != 1){
+                date = addDays(date, -1);
+            }
+            return date;
+        }
+
+        function addDays(date, days){
+            let millis = date.getTime();
+            const millisInOneDay = 1000 * 60 * 60 * 24;            
+            return new Date(millis + millisInOneDay * days);
         }
 
         // controller
