@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        #app{
+        #app {
             display: grid;
-            grid-template-columns: repeat(3,100px);
-            grid-template-rows: repeat(3,100px);
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
         }
-        #app > div{
+
+        #app>div {
             border: 2px solid gray;
             display: flex;
             justify-content: center;
@@ -19,21 +21,42 @@
         }
     </style>
 </head>
+
 <body>
+    <h1>Pause til 13:05</h1>
     <div id="app"></div>
 
     <script>
-        let board = '37541 286';
+        // model
+        let board = '73541 286';
 
+        // view
         updateView();
-        function updateView(){
+        function updateView() {
             let cellsHtml = '';
-            for(let index = 0; index < board.length; index++){
-                cellsHtml +=  `<div>${board.charAt(index)}</div>`;
+            for (let index = 0; index < board.length; index++) {
+                const character = board.charAt(index);
+                cellsHtml += `<div onclick="swap(${index})">${character}</div>`;
             }
             document.getElementById('app').innerHTML = cellsHtml;
+        }
 
+        // controller
+        function swap(index) {
+            const selectedRowIndex = Math.floor(index / 3);
+            const selectedColIndex = index % 3;
+            const blankIndex = board.indexOf(' ');
+            const blankRowIndex = Math.floor(blankIndex / 3);
+            const blankColIndex = blankIndex % 3;
+            
+            const character = board.charAt(index);
+            board = board
+                .replace(' ', 'x')
+                .replace(character, ' ')
+                .replace('x', character);
+            updateView();
         }
     </script>
 </body>
+
 </html>
